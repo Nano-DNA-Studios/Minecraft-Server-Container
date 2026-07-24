@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+PAPER_USER_AGENT="nano-class-minecraft-server/1.0 (admin@example.com)"
+OUTPUT_FILE="/paper.jar"
+
 MINECRAFT_VERSION="${MINECRAFT_VERSION}"
-PAPER_USER_AGENT="${PAPER_USER_AGENT}"
-OUTPUT_FILE="${OUTPUT_FILE:-/paper.jar}"
 
 BUILD_JSON="$(
     curl \
