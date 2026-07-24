@@ -31,17 +31,17 @@ ENV MINECRAFT_GID=1001
 ENV EULA=TRUE
 ENV MEMORY_MIN=2G 
 ENV MEMORY_MAX=6G
-ENV JAVA_PACKAGE=openjdk-25-jre
 
-# Find the correct Java package for the given Minecraft version
+# Copy the script to determine the Java Package
 COPY java-package.sh /usr/local/bin/java-package
-RUN chmod +x /usr/local/bin/java-package && JAVA_PACKAGE="$(/usr/local/bin/java-package)"
+RUN chmod +x /usr/local/bin/java-package
 
-# Install necessary packages including the correct Java version and tini for proper signal handling
-RUN apt-get update \
+# Run the script to find the Java Package and install it along with tini for proper signal handling
+RUN JAVA_PACKAGE="$(/usr/local/bin/java-package)" \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
-        "${JAVA_PACKAGE}"-headless \
+        "${JAVA_PACKAGE}" \
         tini \
     && rm -rf /var/lib/apt/lists/* 
 
