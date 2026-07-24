@@ -60,10 +60,8 @@ RUN mkdir -p /opt/minecraft /data \
 # Copy the downloaded Paper jar from the downloader stage to the final image
 COPY --from=downloader --chown=minecraft /paper.jar /opt/minecraft/paper.jar
 
-# Copy the entrypoint script to the final image
+# Copy the entrypoint script to the final image and make it executable
 COPY entrypoint.sh /usr/local/bin/minecraft-entrypoint
-
-# Set the entrypoint script as executable
 RUN chmod +x /usr/local/bin/minecraft-entrypoint
 
 WORKDIR /data
