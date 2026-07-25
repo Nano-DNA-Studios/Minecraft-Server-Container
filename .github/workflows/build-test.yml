@@ -24,7 +24,7 @@ jobs:
     runs-on: ["self-hosted", "run-${{github.run_id}}"]
     strategy:
       matrix:
-        versions: ["26.2", "1.21.8", "1.17.1", "1.16.5", "1.12.2"]
+        versions: ["26.2", "1.21.8", "1.17.1", "1.16.2", "1.12.2"]
     steps:
       - name: Build Docker Images
         shell: bash
@@ -35,7 +35,7 @@ jobs:
     runs-on: ["self-hosted", "run-${{github.run_id}}"]
     strategy:
       matrix:
-        versions: ["26.2", "1.21.8", "1.17.1", "1.16.5", "1.12.2"]
+        versions: ["26.2", "1.21.8", "1.17.1", "1.16.2", "1.12.2"]
     steps:
       - name: Remove Docker Images
         shell: bash
