@@ -1,0 +1,43 @@
+name: Build
+
+on:
+  workflow_dispatch:
+  pull_request:
+  
+permissions:
+  contents: read 
+  packages: read
+
+jobs:
+  setup:
+    runs-on: ["self-hosted", "run-${{github.run_id}}"]
+    steps:
+      - name: Clone and Checkout the Repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          token: ${{ secrets.GITHUB_TOKEN }}
+          clean: true
+        
+  build-docker:
+    needs: setup
+    runs-on: ["self-hosted", "run-${{github.run_id}}"]
+    strategy:
+      matrix:
+        versions: ["26.2", "1.21.8"]
+    steps:
+      - name: Build Docker Images
+        shell: bash
+        run: dotnet build --build-arg MINECRAFT_VERSION=${{ matrix.versions }} -t minecraft-papermc-server:${{ matrix.versions }} .
+
+  remove-images:
+    needs: build-docker
+    runs-on: ["self-hosted", "run-${{github.run_id}}"]
+    strategy:
+      matrix:
+        versions: ["26.2", "1.21.8"]
+    steps:
+      - name: Remove Docker Images
+        shell: bash
+        run: |
+          docker rmi minecraft-papermc-server:${{ matrix.versions }} || true
