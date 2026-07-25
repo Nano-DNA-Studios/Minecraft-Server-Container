@@ -41,7 +41,7 @@ RUN JAVA_PACKAGE="$(/usr/local/bin/java-package)" \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         ca-certificates \
-        "${JAVA_PACKAGE}" \
+        "${JAVA_PACKAGE}"-headless \
         tini \
     && rm -rf /var/lib/apt/lists/* 
 
