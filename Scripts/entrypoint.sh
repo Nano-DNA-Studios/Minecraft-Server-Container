@@ -12,5 +12,5 @@ printf 'eula=true\n' > /data/eula.txt
 exec java \
     "-Xms${MEMORY_MIN}" \
     "-Xmx${MEMORY_MAX}" \
-    -jar /opt/minecraft/paper.jar \
+    -jar /minecraft/paper.jar \
     --nogui
