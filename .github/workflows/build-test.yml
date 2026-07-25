@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Build Docker Images
         shell: bash
-        run: dotnet build --build-arg MINECRAFT_VERSION=${{ matrix.versions }} -t minecraft-papermc-server:${{ matrix.versions }} .
+        run: docker build --build-arg MINECRAFT_VERSION=${{ matrix.versions }} -t minecraft-papermc-server:${{ matrix.versions }} .
 
   remove-images:
     needs: build-docker
