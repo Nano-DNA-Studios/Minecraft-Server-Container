@@ -23,8 +23,10 @@ RUN chmod +x /usr/local/bin/download-paper && /usr/local/bin/download-paper
 # ------------------------------------------------------------
 FROM ubuntu:24.04
 
+# Define Arguments 
 ARG MINECRAFT_VERSION
 
+# Define Default Environment Variables
 ENV DEBIAN_FRONTEND=noninteractive
 ENV MINECRAFT_UID=1001
 ENV MINECRAFT_GID=1001
@@ -54,11 +56,11 @@ RUN groupadd --gid "${MINECRAFT_GID}" minecraft \
         --shell /bin/bash minecraft
 
 # Create directories for Minecraft server and set ownership to the minecraft user
-RUN mkdir -p /opt/minecraft /data \
-    && chown -R minecraft /opt/minecraft /data
+RUN mkdir -p /minecraft /data \
+    && chown -R minecraft /minecraft /data
 
 # Copy the downloaded Paper jar from the downloader stage to the final image
-COPY --from=downloader --chown=minecraft /paper.jar /opt/minecraft/paper.jar
+COPY --from=downloader --chown=minecraft /paper.jar /minecraft/paper.jar
 
 # Copy the entrypoint script to the final image and make it executable
 COPY Scripts/entrypoint.sh /usr/local/bin/minecraft-entrypoint
