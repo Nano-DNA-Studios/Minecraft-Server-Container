@@ -45,7 +45,7 @@ For example:
 ```sh
 docker run --rm \
   -e MAX_PLAYERS=50 \
-  -e MOTD='Nano Network' \
+  -e MOTD='Minecraft Server' \
   -e RCON_PASSWORD='change-me' \
   -e RCON_PORT=25575 \
   -e SERVER_PORT=25565 \
