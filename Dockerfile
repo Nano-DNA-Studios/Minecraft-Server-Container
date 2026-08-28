@@ -64,6 +64,7 @@ COPY --from=downloader --chown=minecraft /paper.jar /minecraft/paper.jar
 
 # Copy the entrypoint script to the final image and make it executable
 COPY ./Scripts/entrypoint.sh /usr/local/bin/minecraft-entrypoint
+COPY ./Data/* /data/
 RUN chmod +x /usr/local/bin/minecraft-entrypoint
 
 WORKDIR /data
