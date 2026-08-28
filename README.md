@@ -26,3 +26,31 @@ Note : The `MEMORY_MIN` and `MEMORY_MAX` values are Optional to override.
 | 1.17–1.19.x               | Java 17                  |
 | 1.20–1.21.11              | Java 21                  |
 | 26.1 and newer            | Java 25                  |
+
+## Server properties
+
+The container starts with the defaults in `Data/server.properties`. Override these properties at runtime by passing any of the following environment variables:
+
+| Environment variable | Server property |
+| -------------------- | --------------- |
+| `MAX_PLAYERS`        | `max-players`   |
+| `MOTD`               | `motd`          |
+| `RCON_PASSWORD`      | `rcon.password` |
+| `RCON_PORT`          | `rcon.port`     |
+| `SERVER_PORT`        | `server-port`   |
+| `VIEW_DISTANCE`      | `view-distance` |
+
+For example:
+
+```sh
+docker run --rm \
+  -e MAX_PLAYERS=50 \
+  -e MOTD='Nano Network' \
+  -e RCON_PASSWORD='change-me' \
+  -e RCON_PORT=25575 \
+  -e SERVER_PORT=25565 \
+  -e VIEW_DISTANCE=16 \
+  minecraft-papermc-server
+```
+
+Only variables that are explicitly set are applied, so unset variables retain the values from `server.properties`.
