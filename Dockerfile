@@ -15,7 +15,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Run the download script to fetch the latest Paper jar for the specified Minecraft version
-COPY Scripts/download-paper.sh /usr/local/bin/download-paper
+COPY ./Scripts/download-paper.sh /usr/local/bin/download-paper
 RUN chmod +x /usr/local/bin/download-paper && /usr/local/bin/download-paper
 
 # ------------------------------------------------------------
@@ -35,7 +35,7 @@ ENV MEMORY_MIN=2G
 ENV MEMORY_MAX=6G
 
 # Copy the script to determine the Java Package
-COPY Scripts/java-package.sh /usr/local/bin/java-package
+COPY ./Scripts/java-package.sh /usr/local/bin/java-package
 RUN chmod +x /usr/local/bin/java-package
 
 # Run the script to find the Java Package and install it along with tini for proper signal handling
@@ -63,7 +63,8 @@ RUN mkdir -p /minecraft /data \
 COPY --from=downloader --chown=minecraft /paper.jar /minecraft/paper.jar
 
 # Copy the entrypoint script to the final image and make it executable
-COPY Scripts/entrypoint.sh /usr/local/bin/minecraft-entrypoint
+COPY ./Scripts/entrypoint.sh /usr/local/bin/minecraft-entrypoint
+COPY ./Data/* /data/
 RUN chmod +x /usr/local/bin/minecraft-entrypoint
 
 WORKDIR /data
