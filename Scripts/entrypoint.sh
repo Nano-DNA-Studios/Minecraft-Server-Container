@@ -50,6 +50,7 @@ if [[ -f "$properties_file" ]]; then
     [[ -v RCON_PORT ]] && set_property 'rcon.port' RCON_PORT
     [[ -v SERVER_PORT ]] && set_property 'server-port' SERVER_PORT
     [[ -v VIEW_DISTANCE ]] && set_property 'view-distance' VIEW_DISTANCE
+    [[ -v SIM_DISTANCE ]] && set_property 'simulation-distance' SIM_DISTANCE
 fi
 
 exec java \
