@@ -55,5 +55,8 @@ fi
 exec java \
     "-Xms${MEMORY_MIN}" \
     "-Xmx${MEMORY_MAX}" \
+    -XX:+UseG1GC \
+    -XX:+ParallelRefProcEnabled \
+    -XX:MaxGCPauseMillis=200 \
     -jar /minecraft/paper.jar \
     --nogui
