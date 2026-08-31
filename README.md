@@ -1,11 +1,11 @@
 # Minecraft-Server-Container
-A Repo for creating a Docker Container used to host a portable Minecraft Server
+A Repo for creating a Docker Container used to host a portable PaperMC Minecraft Server
 
 ## Building a Server Container
 
 To build a new Container for a specific Minecraft Version, the following command can be used :
 ```
-docker build --build-arg MINECRAFT_VERSION=<VERSION> -t minecraft-papermc-server .
+docker build --build-arg MINECRAFT_VERSION=<VERSION> -t minecraft-papermc-server:latest .
 ```
 
 ## Running Minecraft Server
@@ -54,3 +54,15 @@ docker run --rm \
 ```
 
 Only variables that are explicitly set are applied, so unset variables retain the values from `server.properties`.
+
+The current defaults are :
+
+| Server property       | Value            |
+| --------------------- | ---------------- |
+| `max-players`         | 20               |
+| `motd`                | Minecraft Server |
+| `rcon.password`       | RCONPASSWORD     |
+| `rcon.port`           | 25575            |
+| `server-port`         | 25565            |
+| `view-distance`       | 16               |
+| `simulation-distance` | 20               |
