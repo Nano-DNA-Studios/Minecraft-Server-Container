@@ -42,8 +42,8 @@ services:
       - ./backup:/backup
       - /var/run/docker.sock:/var/run/docker.sock
   server:
-    image: ghcr.io/nano-dna-studios/nano-minecraft-server:26.2
-    container_name: nano-minecraft-server
+    image: ghcr.io/nano-dna-studios/minecraft-papermc-server:26.2
+    container_name: minecraft-papermc-server
     env_file:
       - ./.env
     environment:
