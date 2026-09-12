@@ -80,6 +80,7 @@ RCON_PORT=25575
 SERVER_PORT=25565
 VIEW_DISTANCE=<16-32>
 SIM_DISTANCE=<16-32>
+DIFFICULTY=easy
 ```
 
 ## Minecraft Server Version to Java Mapping
