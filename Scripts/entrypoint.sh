@@ -51,6 +51,7 @@ if [[ -f "$properties_file" ]]; then
     [[ -v SERVER_PORT ]] && set_property 'server-port' SERVER_PORT
     [[ -v VIEW_DISTANCE ]] && set_property 'view-distance' VIEW_DISTANCE
     [[ -v SIM_DISTANCE ]] && set_property 'simulation-distance' SIM_DISTANCE
+    [[ -v DIFFICULTY ]] && set_property 'difficulty' DIFFICULTY
 fi
 
 exec java \
