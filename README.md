@@ -105,6 +105,7 @@ The container starts with the defaults in `Data/server.properties`. Override the
 | `RCON_PORT`          | `rcon.port`     |
 | `SERVER_PORT`        | `server-port`   |
 | `VIEW_DISTANCE`      | `view-distance` |
+| `DIFFICULTY`         | `difficulty`    |
 
 For example:
 
@@ -116,6 +117,7 @@ docker run --rm \
   -e RCON_PORT=25575 \
   -e SERVER_PORT=25565 \
   -e VIEW_DISTANCE=16 \
+  -e DIFFICULTY='easy' \
   minecraft-papermc-server
 ```
 
@@ -132,3 +134,4 @@ The current defaults are :
 | `server-port`         | 25565            |
 | `view-distance`       | 16               |
 | `simulation-distance` | 20               |
+| `difficulty`          | easy             |
